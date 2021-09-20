@@ -5,27 +5,21 @@
 
 #include <chrono>
 
+namespace EventTypes
+{
+    std::string Event1 = "test:Event1";
+    std::string Event2 = "test:Event2";
+};
+
 int main(int, char**) {
 
-    enum EventTypes {
-        Event1,
-        Event2,
-    };
-    
     klib::KEventLoop eventloop([](klib::KEvent event){
-        switch (event.eventType)
-        {
-        case EventTypes::Event1:
+        if(event.eventType == EventTypes::Event1) {
             std::cout << " event 1 " << std::endl;
-            break;
-        
-        case EventTypes::Event2:
-            std::cout << " event 2 " << std::endl;
-            break;
-
-        default:
-            break;
         }
+        else if(event.eventType == EventTypes::Event2) {
+            std::cout << " event 2 " << std::endl;
+        }        
     });
 
     using namespace std::chrono_literals;

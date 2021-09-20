@@ -6,14 +6,15 @@
 #include <queue>
 #include <functional>
 #include <mutex>
+#include <string>
 
 namespace klib
 {
 
     struct KEvent
     {
-        uint32_t eventType;
-        std::any eventdata;
+        std::string eventType;
+        std::any    eventdata;
     };    
 
     class KEventLoop
